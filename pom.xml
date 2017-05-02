@@ -10,6 +10,10 @@
 
     <name>jbehave-example</name>
     <url>https://github.com/Iurii-Dziuban/jbehave-example</url>
+         
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <scm>
         <connection>scm:git:https://github.com/Iurii-Dziuban/jbehave-example.git</connection>
