@@ -7,14 +7,24 @@ import org.jbehave.core.embedder.StoryControls;
 import org.jbehave.core.failures.PassingUponPendingStep;
 import org.jbehave.core.failures.RethrowingFailure;
 import org.jbehave.core.i18n.LocalizedKeywords;
-import org.jbehave.core.io.*;
+import org.jbehave.core.io.AbsolutePathCalculator;
+import org.jbehave.core.io.CodeLocations;
+import org.jbehave.core.io.LoadFromClasspath;
+import org.jbehave.core.io.StoryFinder;
+import org.jbehave.core.io.UnderscoredCamelCaseResolver;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.parsers.RegexStoryParser;
 import org.jbehave.core.reporters.FreemarkerViewGenerator;
 import org.jbehave.core.reporters.PrintStreamStepdocReporter;
 import org.jbehave.core.reporters.StoryReporterBuilder;
-import org.jbehave.core.steps.*;
+import org.jbehave.core.steps.InjectableStepsFactory;
+import org.jbehave.core.steps.InstanceStepsFactory;
+import org.jbehave.core.steps.MarkUnmatchedStepsAsPending;
+import org.jbehave.core.steps.ParameterControls;
+import org.jbehave.core.steps.ParameterConverters;
+import org.jbehave.core.steps.SilentStepMonitor;
+import org.jbehave.core.steps.StepFinder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +83,8 @@ public class ExampleAllStory extends JUnitStories {
     @Override
     protected List<String> storyPaths() {
         StoryFinder finder = new StoryFinder();
-        return finder.findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(), Arrays.asList("**/*.story"), Arrays.asList(""));
+        return finder.findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(),
+                Arrays.asList("**/*.story"), Arrays.asList(""));
     }
 
     @Override

@@ -24,7 +24,8 @@ public class ExampleSteps extends Steps {
 
     @Then("x should equal $value")
     public void thenXshouldBe(@Named("value") int value) {
-        if (value != x)
+        if (value != x) {
             throw new RuntimeException("x is " + x + ", but should be " + value);
+        }
     }
 }
