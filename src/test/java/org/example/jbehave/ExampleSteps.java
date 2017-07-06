@@ -1,5 +1,6 @@
 package org.example.jbehave;
 
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -10,9 +11,10 @@ import org.jbehave.core.steps.Steps;
  * Created by iurii.dziuban on 31.10.2016.
  */
 public class ExampleSteps extends Steps {
-    int x;
+    private int x;
 
     @Given("a variable x with value $value")
+    @Alias("a parameter x with value $value")
     public void givenXValue(@Named("value") int value) {
         x = value;
     }

@@ -13,6 +13,7 @@ import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.io.UnderscoredCamelCaseResolver;
 import org.jbehave.core.junit.JUnitStories;
+import org.jbehave.core.model.TableTransformers;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.parsers.RegexStoryParser;
 import org.jbehave.core.reporters.FreemarkerViewGenerator;
@@ -26,18 +27,18 @@ import org.jbehave.core.steps.ParameterConverters;
 import org.jbehave.core.steps.SilentStepMonitor;
 import org.jbehave.core.steps.StepFinder;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 /**
  * Created by iurii.dziuban on 31.10.2016.
  */
-public class ExampleAllStory extends JUnitStories {
+public class AllStoriesByRegexPath extends JUnitStories {
 
     private Configuration configuration;
 
-    public ExampleAllStory() {
+    public AllStoriesByRegexPath() {
         super();
         configuration = new Configuration() {
         };
@@ -52,7 +53,7 @@ public class ExampleAllStory extends JUnitStories {
         configuration.useKeywords(new LocalizedKeywords(Locale.ENGLISH));
         configuration.usePathCalculator(new AbsolutePathCalculator());
         configuration.useParameterControls(new ParameterControls());
-        configuration.useParameterConverters(new ParameterConverters());
+        configuration.useParameterConverters(new ParameterConverters(new TableTransformers()));
         configuration.useParanamer(new NullParanamer());
         configuration.usePendingStepStrategy(new PassingUponPendingStep());
         configuration.useStepCollector(new MarkUnmatchedStepsAsPending());
@@ -63,7 +64,7 @@ public class ExampleAllStory extends JUnitStories {
                 .useStepPatternParser(new RegexPrefixCapturingPatternParser());
         configuration.useStoryControls(new StoryControls());
         configuration.useStoryLoader(new LoadFromClasspath());
-        configuration.useStoryParser(new RegexStoryParser(configuration.keywords()));
+        configuration.useStoryParser(new RegexStoryParser());
         configuration.useStoryPathResolver(new UnderscoredCamelCaseResolver());
         configuration.useStoryReporterBuilder(new StoryReporterBuilder());
         configuration.useViewGenerator(new FreemarkerViewGenerator());
@@ -84,7 +85,7 @@ public class ExampleAllStory extends JUnitStories {
     protected List<String> storyPaths() {
         StoryFinder finder = new StoryFinder();
         return finder.findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(),
-                Arrays.asList("**/*.story"), Arrays.asList(""));
+                Collections.singletonList("**/*.story"), Collections.singletonList(""));
     }
 
     @Override

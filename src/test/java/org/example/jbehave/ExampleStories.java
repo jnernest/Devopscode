@@ -11,6 +11,7 @@ import org.jbehave.core.io.AbsolutePathCalculator;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.UnderscoredCamelCaseResolver;
 import org.jbehave.core.junit.JUnitStory;
+import org.jbehave.core.model.TableTransformers;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.parsers.RegexStoryParser;
 import org.jbehave.core.reporters.FreemarkerViewGenerator;
@@ -48,7 +49,7 @@ public class ExampleStories extends JUnitStory {
         configuration.useKeywords(new LocalizedKeywords(Locale.ENGLISH));
         configuration.usePathCalculator(new AbsolutePathCalculator());
         configuration.useParameterControls(new ParameterControls());
-        configuration.useParameterConverters(new ParameterConverters());
+        configuration.useParameterConverters(new ParameterConverters(new TableTransformers()));
         configuration.useParanamer(new NullParanamer());
         configuration.usePendingStepStrategy(new PassingUponPendingStep());
         configuration.useStepCollector(new MarkUnmatchedStepsAsPending());
@@ -59,7 +60,7 @@ public class ExampleStories extends JUnitStory {
                 .useStepPatternParser(new RegexPrefixCapturingPatternParser());
         configuration.useStoryControls(new StoryControls());
         configuration.useStoryLoader(new LoadFromClasspath());
-        configuration.useStoryParser(new RegexStoryParser(configuration.keywords()));
+        configuration.useStoryParser(new RegexStoryParser());
         configuration.useStoryPathResolver(new UnderscoredCamelCaseResolver());
         configuration.useStoryReporterBuilder(new StoryReporterBuilder());
         configuration.useViewGenerator(new FreemarkerViewGenerator());
