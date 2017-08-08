@@ -8,9 +8,11 @@ import org.jbehave.core.failures.PassingUponPendingStep;
 import org.jbehave.core.failures.RethrowingFailure;
 import org.jbehave.core.i18n.LocalizedKeywords;
 import org.jbehave.core.io.AbsolutePathCalculator;
+import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
+import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.io.UnderscoredCamelCaseResolver;
-import org.jbehave.core.junit.JUnitStory;
+import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.model.TableTransformers;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.parsers.RegexStoryParser;
@@ -25,16 +27,18 @@ import org.jbehave.core.steps.ParameterConverters;
 import org.jbehave.core.steps.SilentStepMonitor;
 import org.jbehave.core.steps.StepFinder;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 /**
  * Created by iurii.dziuban on 31.10.2016.
  */
-public class ExampleStories extends JUnitStory {
+public class AllStoriesByRegexPathTest extends JUnitStories {
 
     private Configuration configuration;
 
-    public ExampleStories() {
+    public AllStoriesByRegexPathTest() {
         super();
         configuration = new Configuration() {
         };
@@ -78,11 +82,17 @@ public class ExampleStories extends JUnitStory {
     }
 
     @Override
+    protected List<String> storyPaths() {
+        StoryFinder finder = new StoryFinder();
+        return finder.findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(),
+                Collections.singletonList("**/*.story"), Collections.singletonList(""));
+    }
+
+    @Override
     public Configuration configuration() {
         return configuration;
     }
 
-    // Here we specify the steps classes
     @Override
     public InjectableStepsFactory stepsFactory() {
         return new InstanceStepsFactory(configuration(), new ExampleSteps());

@@ -1,5 +1,5 @@
 # jbehave-example
-example of jbehave configuration for IDEA and maven
+Example of jbehave configuration for IDEA and maven
 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)    
 [![Build Status](https://travis-ci.org/Iurii-Dziuban/jbehave-example.svg?branch=master)](https://travis-ci.org/Iurii-Dziuban/jbehave-example)
@@ -17,7 +17,11 @@ Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
 
 # Project parts
 Under `src/test/java` :
-- Steps description (`ExampleSteps`) with annotation related to `.story` files
-- One story java file. To be run by junit (`ExampleStories` extending `JUnitStory`). Steps are initialised. Mapping to story file by name (`ExampleStories.java` -> `example_stories.story`). Configuration can be splitted into another class.
-- All stories file. To be run by junit (`AllStoriesByRegexPath` extending `JUnitStories`) Folders, paths or regex are provided to find `.story` files. Configuration can be splitted into another class.
-- Story file. `example_stories.story`
+- Steps description is done in `ExampleSteps.java` with description annotations to each step that can be used in the `.story` files
+- One story java file per one story file to be run by junit (`ExampleStory` extending `JUnitStory`). 
+Steps are initialised. Mapping to story file is done by name (`ExampleStory.java` -> `example_story.story`). 
+Configuration can be put into another class and reused.
+- All stories file so all stories be run by junit (`AllStoriesByRegexPathTest` extending `JUnitStories`) 
+Folders, paths or regex are provided to find `.story` files. 
+Configuration can be put into another class and reused.
+- Story file itself. `example_stories.story`
