@@ -70,8 +70,6 @@
                 <version>2.20</version>
                 <configuration>
                     <argLine>${argLine}</argLine>
-                    <!-- Disable unit tests -->
-                    <skip>true</skip>
                 </configuration>
             </plugin>
 
