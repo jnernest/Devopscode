@@ -10,6 +10,8 @@ Example of jbehave configuration for IDEA and maven
 ## Table of contents:
  * [Static Analysis QA Checks](#checks)
  * [Project parts](#project-parts)
+   * [JBehave only](#jbehave-only)
+   * [JBehave with Selenide](#jbehave-with-selenide)
 
 # Checks
 
@@ -17,6 +19,7 @@ Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
 
 # Project parts
 Under `src/test/java` :
+## JBehave only
 - Steps description is done in `ExampleSteps.java` with description annotations to each step that can be used in the `.story` files
 - One story java file per one story file to be run by junit (`ExampleStory` extending `JUnitStory`). 
 Steps are initialised. Mapping to story file is done by name (`ExampleStory.java` -> `example_story.story`). 
@@ -25,3 +28,9 @@ Configuration can be put into another class and reused.
 Folders, paths or regex are provided to find `.story` files. 
 Configuration can be put into another class and reused.
 - Story file itself. `example_stories.story`
+
+## JBehave with Selenide
+- `selenide` package
+  - `GoogleTest` - selenide only example
+  - `GoogleJBehaveStory` and `google_j_behave_story.story` - jbehave with selenide story
+  - `GoogleJBehaveSteps` - steps for selenide with Jbehave example
