@@ -147,6 +147,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>${argLine}</argLine>
+                    <excludes>
+                        <exclude>**/GoogleTest.*</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
