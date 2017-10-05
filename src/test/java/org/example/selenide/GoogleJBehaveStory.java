@@ -32,6 +32,7 @@ import java.util.Locale;
  * Created by iurii.dziuban on 02/10/2017.
  */
 public class GoogleJBehaveStory extends JUnitStory {
+
     private Configuration configuration;
 
     public GoogleJBehaveStory() {
