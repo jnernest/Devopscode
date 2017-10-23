@@ -13,7 +13,6 @@ import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.io.UnderscoredCamelCaseResolver;
 import org.jbehave.core.junit.JUnitStories;
-import org.jbehave.core.model.TableTransformers;
 import org.jbehave.core.parsers.RegexPrefixCapturingPatternParser;
 import org.jbehave.core.parsers.RegexStoryParser;
 import org.jbehave.core.reporters.FreemarkerViewGenerator;
@@ -53,7 +52,7 @@ public class AllStoriesByRegexPathTest extends JUnitStories {
         configuration.useKeywords(new LocalizedKeywords(Locale.ENGLISH));
         configuration.usePathCalculator(new AbsolutePathCalculator());
         configuration.useParameterControls(new ParameterControls());
-        configuration.useParameterConverters(new ParameterConverters(new TableTransformers()));
+        configuration.useParameterConverters(new ParameterConverters());
         configuration.useParanamer(new NullParanamer());
         configuration.usePendingStepStrategy(new PassingUponPendingStep());
         configuration.useStepCollector(new MarkUnmatchedStepsAsPending());
