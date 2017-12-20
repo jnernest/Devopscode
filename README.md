@@ -1,5 +1,6 @@
 # jbehave-example
-Example of jbehave configuration for IDEA and maven
+Example of jbehave (http://jbehave.org/) configuration for IDEA and maven
+Additional integration with selenide (http://selenide.org/)
 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)    
 [![Build Status](https://travis-ci.org/Iurii-Dziuban/jbehave-example.svg?branch=master)](https://travis-ci.org/Iurii-Dziuban/jbehave-example)
@@ -12,10 +13,11 @@ Example of jbehave configuration for IDEA and maven
  * [Project parts](#project-parts)
    * [JBehave only](#jbehave-only)
    * [JBehave with Selenide](#jbehave-with-selenide)
-
+ * [Ideas to try](#ideas)
+ 
 # Checks
 
-Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
+`Jacoco`/`cobertura` code coverage, `pmd`, `checkstyle`, `enforcer`, `findbugs`
 
 # Project parts
 Under `src/test/java` :
@@ -34,3 +36,5 @@ Configuration can be put into another class and reused.
   - `GoogleTest` - selenide only example
   - `GoogleJBehaveStory` and `google_j_behave_story.story` - jbehave with selenide story
   - `GoogleJBehaveSteps` - steps for selenide with Jbehave example
+
+# Ideas
