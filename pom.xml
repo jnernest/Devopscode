@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <jbehave.version>4.1.3</jbehave.version>
-        <selenide.version>4.8</selenide.version>
+        <selenide.version>4.9</selenide.version>
         <java.version>1.8</java.version>
 
         <jacoco.ratio.instruction>1.00</jacoco.ratio.instruction>
